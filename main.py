@@ -10,7 +10,7 @@ CLIENT_SECRET = "SRy8Q~kOYAFkLp50PBxLkfe0N0hel_OZUfUSsdvk"
 TENANT_ID = "5eabe8c6-2985-4e34-992a-85fcc1c8b004"
 AUTHORITY = f"https://login.microsoftonline.com/{TENANT_ID}"
 SCOPE = ["User.Read", "openid", "profile"]
-REDIRECT_URI = "https://mahinm.azurewebsites.net/"
+REDIRECT_URI = "https://birlasoft.azurewebsites.net/"
 GROUP_ID = "4c604932-4c47-40d5-81da-420a0e6acaa9"
 
 import webbrowser
@@ -20,7 +20,7 @@ import requests
 
 client_id = CLIENT_ID
 tenant_id = TENANT_ID
-redirect_uri = "https://mahinm.azurewebsites.net/"
+redirect_uri = "https://birlasoft.azurewebsites.net/"
 scopes = ["https://graph.microsoft.com/.default"]
 authority = f"https://login.microsoftonline.com/{tenant_id}"
 endpoint = "https://graph.microsoft.com/v1.0/me"

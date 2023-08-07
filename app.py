@@ -24,7 +24,7 @@ import threading
 
 AUTHORITY = f"https://login.microsoftonline.com/{TENANT_ID.replace('{', '').replace('}', '')}"
 SCOPE = ["https://graph.microsoft.com/.default"]
-REDIRECT_URI = "https://mahinm.azurewebsites.net/"  # Replace with your callback URI
+REDIRECT_URI = "https://birlasoft.azurewebsites.net/"  # Replace with your callback URI
 
 
 # Create a public client application

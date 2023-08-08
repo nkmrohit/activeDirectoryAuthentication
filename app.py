@@ -24,7 +24,7 @@ import threading
 
 AUTHORITY = f"https://login.microsoftonline.com/{TENANT_ID.replace('{', '').replace('}', '')}"
 SCOPE = ["https://graph.microsoft.com/.default"]
-REDIRECT_URI = "https://birlasoft.azurewebsites.net/"  # Replace with your callback URI
+REDIRECT_URI = "https://mahinm.azurewebsites.net/"  # Replace with your callback URI
 
 
 # Create a public client application
@@ -32,8 +32,10 @@ app = msal.PublicClientApplication(
     CLIENT_ID, authority=AUTHORITY
 )
 
+
 # Streamlit app
 def main():
+
     st.title("Streamlit Azure AD Authentication")
     st.write("This is a protected application. Only users from a specific Azure AD group can access it.")
 
@@ -52,15 +54,15 @@ def main():
             flow = app.initiate_device_flow(SCOPE)
             st.markdown(flow["message"])
             result = app.acquire_token_by_device_flow(flow)
-    print("Result data",result)
+    #print("Result data",result)
     if result:
         # Check if the user is a member of the specified AD group
         graph_url = "https://graph.microsoft.com/v1.0/me/memberOf"
         headers = {"Authorization": f"Bearer {result['access_token']}"}
         response = requests.get(graph_url, headers=headers)
         groups = response.json().get("value", [])
-        group_names = [group.get("displayName", "") for group in groups]
-        
+        group_names = [group.get("id", "") for group in groups]
+        print("Group name",groups)
         if GROUP_ID in group_names:
             st.success("You are authorized to access this application.")
             st.write("You can now close this window and return to the AD-verification application.")
